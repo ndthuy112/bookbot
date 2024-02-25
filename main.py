@@ -1,8 +1,9 @@
 def main():
     file_path = "books/frankenstein.txt"
     #print(get_text(file_path))
-    print(count_words(file_path))
-    print(count_letters(file_path))
+    #print(count_words(file_path))
+    #print(count_letters(file_path))
+    create_report(file_path)
 
 
 def get_text(file_path):
@@ -30,6 +31,13 @@ def count_letters(file_path):
 
 def create_report(file_path):
     word_count = count_words(file_path)
-    letter_counts = count_words(file_path)
-    ###
+    letter_counts = count_letters(file_path)
+    sorted_letters = (sorted(letter_counts, key = lambda x:letter_counts[x], reverse = True))
+
+    print(f"This text file has {word_count} words")
+    for letter in sorted_letters:
+        if letter.isalpha():
+            print(f"Letter {letter} appeared {letter_counts[letter]} times")
+
+    
 main()
